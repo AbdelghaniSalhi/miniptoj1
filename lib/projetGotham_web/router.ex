@@ -8,7 +8,7 @@ defmodule ProjetGothamWeb.Router do
   scope "/api", ProjetGothamWeb do
     pipe_through :api
   
-    scope"/users", ProjetGothamWeb do
+    scope"/users" do
       get "/", UserController, :index
       get "/:userid", UserController, :show
       post "/", UserController, :create
