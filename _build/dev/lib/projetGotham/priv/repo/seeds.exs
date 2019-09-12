@@ -12,6 +12,7 @@
 
 alias ProjetGotham.Repo
 alias ProjetGotham.User
+alias ProjetGotham.Clock
 alias ProjetGotham.Workingtime
 
 
@@ -29,4 +30,10 @@ Repo.insert! %Workingtime{
     start: ~N[2000-01-01 23:00:07],
     end: ~N[2000-01-01 23:00:07],
     user: 3
+}
+
+Repo.insert! %Clock{
+    time: ~N[2000-01-01 23:00:07],
+    status: true,
+    user: 27
 }

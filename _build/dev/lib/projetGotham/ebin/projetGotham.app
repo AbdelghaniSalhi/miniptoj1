@@ -9,6 +9,8 @@
                         'Elixir.ProjetGotham.Repo','Elixir.ProjetGotham.User',
                         'Elixir.ProjetGotham.Workingtime',
                         'Elixir.ProjetGothamWeb',
+                        'Elixir.ProjetGothamWeb.ClockController',
+                        'Elixir.ProjetGothamWeb.ClockView',
                         'Elixir.ProjetGothamWeb.Endpoint',
                         'Elixir.ProjetGothamWeb.ErrorHelpers',
                         'Elixir.ProjetGothamWeb.ErrorView',
