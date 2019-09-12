@@ -18,7 +18,7 @@ defmodule ProjetGothamWeb.Router do
   
     scope "/clocks" do
       get "/:userid", ClockController, :index
-      post "/:userid", ClockController, :create
+      post "/:user", ClockController, :create
     end
   
     scope "/workingtimes" do
