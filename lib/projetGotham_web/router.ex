@@ -8,25 +8,25 @@ defmodule ProjetGothamWeb.Router do
   scope "/api", ProjetGothamWeb do
     pipe_through :api
   
-    scope"/api" ProjetGothamWeb do
+    scope"/users" do
       get "/", UserController, :index
-      get "/:UserID", UserController :show
+      get "/:userid", UserController, :show
       post "/", UserController, :create
-      put "/:userID", UserController, :update
-      delete "/:userID", UserController, :delete
+      put "/:userid", UserController, :update
+      delete "/:userid", UserController, :delete
     end
   
     scope "/clocks" do
-      get "/:userID", ClockController, :index
-      post "/:userID", ClockController, :create
+      get "/:userid", ClockController, :index
+      post "/:userid", ClockController, :create
     end
   
     scope "/workingtimes" do
-      get "/:userID", WorkingTimesController, :index
-      get "/:userID/:workingtimeID", WorkingTimesController, :show
-      post "/:userID", WorkingTimesController :create
-      put "/:iD", WorkingTimesController :update
-      delete "/:iD" WorkingTimesController :delete
+      get "/:userid", WorkingTimeController, :index
+      get "/:userid/:workingtimeid", WorkingTimeController, :show
+      post "/:user", WorkingTimeController, :create
+      put "/:id", WorkingTimeController, :update
+      delete "/:id", WorkingTimeController, :delete
     end
   end
 end

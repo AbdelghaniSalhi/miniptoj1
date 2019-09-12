@@ -15,7 +15,11 @@
                         'Elixir.ProjetGothamWeb.Gettext',
                         'Elixir.ProjetGothamWeb.Router',
                         'Elixir.ProjetGothamWeb.Router.Helpers',
-                        'Elixir.ProjetGothamWeb.UserSocket']},
+                        'Elixir.ProjetGothamWeb.UserController',
+                        'Elixir.ProjetGothamWeb.UserSocket',
+                        'Elixir.ProjetGothamWeb.UserView',
+                        'Elixir.ProjetGothamWeb.WorkingTimeController',
+                        'Elixir.ProjetGothamWeb.WorkingTimeView']},
               {registered,[]},
               {vsn,"0.1.0"},
               {mod,{'Elixir.ProjetGotham.Application',[]}}]}.
