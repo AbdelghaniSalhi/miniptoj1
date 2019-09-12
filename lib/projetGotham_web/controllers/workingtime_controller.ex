@@ -8,8 +8,16 @@ defmodule ProjetGothamWeb.WorkingTimeController do
   require Logger
 
   def index(conn, params) do
-    workingtimes = Repo.all(Workingtime)
-    render(conn, "index.json", workingtimes: workingtimes)
+    query = from w in Workingtime, where: w.user == ^params["userid"]
+    with wt = Repo.all(query) do
+      conn
+      |> put_status(200)
+      |> render "index.json", workingtimes: wt
+    else
+      nil ->
+        conn
+        |> send_resp(404, "Not found")
+    end
   end
 
   defp getStart(params) do 
@@ -45,8 +53,8 @@ defmodule ProjetGothamWeb.WorkingTimeController do
   def create(conn, workingtime) do
     wtstart = (workingtime["start"])
     wtend = (workingtime["end"])
-    workingtime = Map.put(workingtime, "start", ~N[2019-09-11 17:47:29])
-    workingtime = Map.put(workingtime, "end", ~N[2019-09-11 17:47:29])
+    workingtime = Map.put(workingtime, "start", wtstart)
+    workingtime = Map.put(workingtime, "end", wtstart)
     changeset = Workingtime.changeset(%Workingtime{}, workingtime)
     case Repo.insert(changeset) do
       {:ok, workingtime} ->
@@ -59,12 +67,36 @@ defmodule ProjetGothamWeb.WorkingTimeController do
         
   end
 
-  def update(conn, %{"userid" => id} = params) do
-  
+  def update(conn, %{"id" => id} = params) do
+    wt = Repo.get(Workingtime, id)
+    with wt = %Workingtime{} <- Repo.get(Workingtime, id) do
+      changeset = Workingtime.changeset(wt, params)
+      case Repo.update(changeset) do
+        {:ok, wt} ->
+          conn
+          |> send_resp(200, "")
+        {:error, _changeset} ->
+          conn
+          |> send_resp(500, "")
+      end
+    else
+      nil ->
+        conn
+        |> send_resp(404, "")
+    end
   end
 
-  def delete(conn, %{"userid" => id}) do
-    
+  def delete(conn, %{"id" => id}) do
+    wt = Repo.get(Workingtime, id)
+    with wt = %Workingtime{} <- Repo.get(Workingtime, id) do
+      Repo.delete!(wt)
+      conn
+      |> send_resp(200, "")
+    else
+      nil ->
+        conn
+        |> send_resp(404, "")
+    end
   end
 
 end
