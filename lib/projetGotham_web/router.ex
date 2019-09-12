@@ -16,17 +16,17 @@ defmodule ProjetGothamWeb.Router do
       delete "/:userid", UserController, :delete
     end
   
-    scope "/clocks", ProjetGothamWeb do
+    scope "/clocks" do
       get "/:userid", ClockController, :index
       post "/:userid", ClockController, :create
     end
   
-    scope "/workingtimes", ProjetGothamWeb do
-      get "/:userid", WorkingTimesController, :index
-      get "/:userid/:workingtimeid", WorkingTimesController, :show
-      post "/:userid", WorkingTimesController, :create
-      put "/:id", WorkingTimesController, :update
-      delete "/:id", WorkingTimesController, :delete
+    scope "/workingtimes" do
+      get "/:userid", WorkingTimeController, :index
+      get "/:userid/:workingtimeid", WorkingTimeController, :show
+      post "/:user", WorkingTimeController, :create
+      put "/:id", WorkingTimeController, :update
+      delete "/:id", WorkingTimeController, :delete
     end
   end
 end

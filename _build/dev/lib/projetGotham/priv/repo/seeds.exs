@@ -9,3 +9,24 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+
+alias ProjetGotham.Repo
+alias ProjetGotham.User
+alias ProjetGotham.Workingtime
+
+
+Repo.insert! %User{
+    username: "Alexandre",
+    email: "alexandre@epitech.eu"
+}
+
+Repo.insert! %User{
+    username: "Test",
+    email: "test@test.fr"
+}
+
+Repo.insert! %Workingtime{
+    start: ~N[2000-01-01 23:00:07],
+    end: ~N[2000-01-01 23:00:07],
+    user: 3
+}
