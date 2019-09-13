@@ -41,7 +41,7 @@ defmodule ProjetGothamWeb.UserController do
     else
       nil ->
         conn
-        |> send_resp(404, "")
+        |> send_resp(404, "Not Found")
     end
   end
 
@@ -54,7 +54,7 @@ defmodule ProjetGothamWeb.UserController do
         |> send_resp(201, "")
       {:error, _changeset} ->
         conn
-        |> send_resp(500, "")
+        |> send_resp(500, "Error")
     end
   
   end
@@ -69,12 +69,12 @@ defmodule ProjetGothamWeb.UserController do
           |> send_resp(200, "")
         {:error, _changeset} ->
           conn
-          |> send_resp(500, "")
+          |> send_resp(500, "Error")
       end
     else
       nil ->
         conn
-        |> send_resp(404, "")
+        |> send_resp(404, "Not Found")
     end
   
   end
@@ -88,7 +88,7 @@ defmodule ProjetGothamWeb.UserController do
     else
       nil ->
         conn
-        |> send_resp(404, "")
+        |> send_resp(404, "Not Found")
     end
   end
 
